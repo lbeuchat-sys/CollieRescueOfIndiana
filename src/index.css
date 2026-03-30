@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --color-collie-green: #2d5a27;
+  --color-collie-dark-green: #1e3d1a;
+  --color-collie-brown: #8b5e3c;
+  --color-collie-tan: #fdfcf7;
+  --color-collie-cream: #f5f1e6;
+  --color-collie-gold: #d9a05b;
+  --color-collie-deep-brown: #5a3a22;
+
+  --font-serif: "Noto Serif", serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-collie-tan text-gray-800 font-sans;
+  }
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
