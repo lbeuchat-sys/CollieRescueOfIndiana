@@ -17,7 +17,7 @@ import {
   Menu,
   X
 } from "lucide-react";
-import { useState } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 
 export default function App() {
@@ -30,6 +30,11 @@ export default function App() {
 
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  useEffect(() => {
+    document.title = "Collie Rescue of Indiana";
+  }, []);
 
   const navLinks = [
     { name: "About Us", href: "#about" },
@@ -37,6 +42,50 @@ function AppContent() {
     { name: "Volunteer", href: "#volunteer" },
     { name: "Contact", href: "#contact" },
   ];
+
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus("submitting");
+    
+    const formData = new FormData(e.currentTarget);
+    
+    // Honeypot check for spam bots
+    if (formData.get("bot-field")) {
+      console.log("Bot detected");
+      setFormStatus("success"); // Pretend it worked to fool the bot
+      setTimeout(() => setFormStatus("idle"), 5000);
+      return;
+    }
+
+    const submission = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      // Send email via backend API
+      const emailResponse = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(submission),
+      });
+
+      if (!emailResponse.ok) {
+        throw new Error("Failed to send email");
+      }
+
+      setFormStatus("success");
+      // Reset after 5 seconds
+      setTimeout(() => setFormStatus("idle"), 5000);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setFormStatus("error");
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -433,21 +482,89 @@ function AppContent() {
             </div>
           </div>
           <div className="lg:col-span-3">
-            <div className="bg-white p-12 rounded-[2.5rem] shadow-sm border border-gray-100 text-center flex flex-col items-center justify-center h-full min-h-[400px]">
-              <div className="w-20 h-20 bg-emerald-50 text-collie-green rounded-full flex items-center justify-center mb-6">
-                <Mail size={40} />
-              </div>
-              <h3 className="text-3xl font-bold text-gray-800 mb-4">Send Us an Email</h3>
-              <p className="text-gray-600 mb-8 max-w-md mx-auto text-lg">
-                Whether you're looking to adopt, volunteer, or just have a question, we're here to help. Click below to email us directly.
-              </p>
-              <a 
-                href="mailto:Collierescue1@aol.com"
-                className="bg-[#2d5a3c] hover:bg-[#244830] text-white font-bold py-4 px-10 rounded-full transition-all shadow-md text-lg flex items-center gap-3"
-              >
-                <Mail size={24} />
-                Collierescue1@aol.com
-              </a>
+            <div className="bg-white p-10 rounded-[2.5rem] shadow-sm border border-gray-100">
+              {formStatus === "success" ? (
+                <div className="py-12 text-center">
+                  <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Mail size={32} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Message Sent!</h3>
+                  <p className="text-gray-600">Thank you for reaching out. A volunteer will get back to you as soon as possible.</p>
+                </div>
+              ) : formStatus === "error" ? (
+                <div className="py-12 text-center">
+                  <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <X size={32} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Submission Failed</h3>
+                  <p className="text-gray-600">There was an error sending your message. Please try again later.</p>
+                  <button 
+                    onClick={() => setFormStatus("idle")}
+                    className="mt-6 text-collie-green font-semibold hover:underline"
+                  >
+                    Try Again
+                  </button>
+                </div>
+              ) : (
+                <form className="space-y-6" onSubmit={handleFormSubmit}>
+                  {/* Honeypot field - hidden from real users, but bots will fill it out */}
+                  <input type="text" name="bot-field" style={{ display: "none" }} tabIndex={-1} autoComplete="off" />
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Your Name *</label>
+                      <input 
+                        name="name"
+                        className="w-full border-gray-200 rounded-lg focus:ring-collie-green focus:border-collie-green py-3 px-4 outline-none transition-all border bg-gray-50/50" 
+                        placeholder="Your Name Here" 
+                        type="text" 
+                        required 
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Email *</label>
+                      <input 
+                        name="email"
+                        className="w-full border-gray-200 rounded-lg focus:ring-collie-green focus:border-collie-green py-3 px-4 outline-none transition-all border bg-gray-50/50" 
+                        placeholder="you@example.com" 
+                        type="email" 
+                        required 
+                      />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">I'm reaching out about...</label>
+                    <select 
+                      name="subject"
+                      className="w-full border-gray-200 rounded-lg focus:ring-collie-green focus:border-collie-green py-3 px-4 text-gray-500 outline-none transition-all bg-gray-50/50 border"
+                    >
+                      <option>Adoption Inquiry</option>
+                      <option>Volunteering</option>
+                      <option>Fostering</option>
+                      <option>Donation / Supplies</option>
+                      <option>Owner Surrender</option>
+                      <option>General Question</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Message</label>
+                    <textarea 
+                      name="message"
+                      className="w-full border-gray-200 rounded-lg focus:ring-collie-green focus:border-collie-green py-3 px-4 outline-none transition-all border bg-gray-50/50" 
+                      placeholder="How can we help?" 
+                      rows={4}
+                      required
+                    ></textarea>
+                  </div>
+                  <button 
+                    disabled={formStatus === "submitting"}
+                    className="w-full bg-[#2d5a3c] hover:bg-[#244830] text-white font-bold py-4 rounded-full transition-all shadow-md disabled:opacity-50 disabled:cursor-not-allowed text-lg"
+                    type="submit"
+                  >
+                    {formStatus === "submitting" ? "Sending..." : "Send Message →"}
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </motion.div>
