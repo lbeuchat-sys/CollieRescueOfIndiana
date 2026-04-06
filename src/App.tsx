@@ -97,8 +97,7 @@ function AppContent() {
               <img 
                 alt="Collie Rescue of Indiana Logo" 
                 className="h-12 w-auto rounded-full" 
-                src="https://lh3.googleusercontent.com/aida/ADBb0uiujz7dr1Lpuzo4D_JK1gMvzKftplgI0M-1_lhv9KMQ8xp3Z1E9-q_fV6CQ6dlNX6yKIUwTQcY3p_9_nI05hGI2LcPakGbRwz8ETyI9Fl7cleHId4X-zpgBot20F1FqvVIsxuRLPywgGFKKVbZY8JRDcn3keSXah9L7KB3S03i_PHky3dc3VFf6jej4psqlKLHadsrV3pjQNkq6em2j6ujJIDA9yHpf4JG20_GPkgYb6u1Gv0cBd7k-0fbn43XxRBjL_MPogGCiX40"
-                referrerPolicy="no-referrer"
+                src="/logo-v3.png"
               />
             </a>
           </div>
@@ -239,8 +238,7 @@ function AppContent() {
               <img 
                 alt="Happy Collie" 
                 className="w-full aspect-[4/3] object-cover" 
-                src="https://lh3.googleusercontent.com/aida/ADBb0uidbgxVKZI0gQPxnwaeDvmEqIvq_WFPk69AySrGb5dsTRHQiQEVJdua3N4LEk-JCVYQ1ZMHt9NgjrXy2-L9YdcJNzVs55ZNKTUNbe2mNqXzz_pZ95d81jI12fOscOGr4J2sTwfNyLL1Towpnc6gC9IYYC_tI4sndZbAzvpcO4xQZuU46w0sr6qEGP7rf8ulVYsCE3sBvk4WyBB_zAJqWCbU1Rz-wGvFo362UIYdPWjvv_zmW4Mx5oJuFyfKVpjLpwavSXfIJTQLfp4"
-                referrerPolicy="no-referrer"
+                src="/happy-collie-v3.jpeg"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-collie-brown text-white p-6 rounded-2xl shadow-xl max-w-[200px]">
@@ -310,8 +308,7 @@ function AppContent() {
                 <img 
                   alt="Collie Portrait" 
                   className="w-full aspect-square object-cover" 
-                  src="https://lh3.googleusercontent.com/aida/ADBb0ugKR2sgUYV5EW_nC5zLURzv864j7aap3M4PUMBlFtwEuBHdP2JGxu7DxYeOsLvDUgdZQP2aXbcMxxjXUswTHATzvxC0tnua1XwYFEWCwkUcoZmN2oVBQJt-MHmOhYaoml51LTmX1aTe3aXYgYd3MI1Mn8w7Na9vqfzgHZjYyYeu2l8tb2SIF-baxYNaKxgbfzvzp1BOugGb0lVD4AfvbmjhHIIILafa0zZ-BvAAYs4YzmKodN84weepgYonx93LHZOEpFnD36F8Bw"
-                  referrerPolicy="no-referrer"
+                  src="/collie-portrait-v3.jpeg"
                 />
               </div>
               <div className="bg-emerald-50 border border-emerald-100 p-8 rounded-[2.5rem] text-center">
@@ -424,8 +421,7 @@ function AppContent() {
               <img 
                 alt="Woman with Collie" 
                 className="w-full h-80 object-cover object-center" 
-                src="https://lh3.googleusercontent.com/aida/ADBb0ugl79Jzu31nHqu_5CXuzAWUG5cu3VvX4KojBGcG7T3NOy5119mlDZPo6w9c31pSTcEco9XNXwk_CXVl7mUapY5Wwxv6PCSVpe_t73qg_hvx__W0NJTE6kjxexUBSApmBKOlRFTeaHooUxA5Gla_oPQX9GCOfcRgCKzj9FMWrzWE0Cp2SPPE2Jhiyo94ciTOPfmixsyOfwehXiE8X9xzUx-UM3RCX800CQEUbQ68yqX2gHk4JhrBzLB6gNaM9uKwyyi-JMQleFATwA"
-                referrerPolicy="no-referrer"
+                src="/woman-collie-v3.jpeg"
               />
             </div>
             <div className="bg-collie-tan border border-gray-100 p-8 rounded-[2.5rem]">
@@ -578,8 +574,7 @@ function AppContent() {
               <img 
                 alt="Collie Rescue Footer Logo" 
                 className="h-16 w-auto mb-8" 
-                src="https://lh3.googleusercontent.com/aida/ADBb0uiujz7dr1Lpuzo4D_JK1gMvzKftplgI0M-1_lhv9KMQ8xp3Z1E9-q_fV6CQ6dlNX6yKIUwTQcY3p_9_nI05hGI2LcPakGbRwz8ETyI9Fl7cleHId4X-zpgBot20F1FqvVIsxuRLPywgGFKKVbZY8JRDcn3keSXah9L7KB3S03i_PHky3dc3VFf6jej4psqlKLHadsrV3pjQNkq6em2j6ujJIDA9yHpf4JG20_GPkgYb6u1Gv0cBd7k-0fbn43XxRBjL_MPogGCiX40"
-                referrerPolicy="no-referrer"
+                src="/logo-v3.png"
               />
               <p className="text-gray-300 max-w-sm text-sm leading-relaxed">
                 Rescuing, rehabilitating, and rehoming collies in need across Indiana, powered entirely by volunteers.

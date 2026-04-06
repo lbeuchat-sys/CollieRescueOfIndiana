@@ -1,6 +1,7 @@
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import path from "path";
+import fs from "fs";
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
 
@@ -67,6 +68,10 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     const distPath = path.join(process.cwd(), "dist");
+    console.log("dist exists:", fs.existsSync(distPath));
+    if (fs.existsSync(distPath)) {
+      console.log("dist contents:", fs.readdirSync(distPath));
+    }
     app.use(express.static(distPath));
     app.get("*", (req, res) => {
       res.sendFile(path.join(distPath, "index.html"));
