@@ -170,7 +170,7 @@ function AppContent() {
 
       {/* Hero Section */}
       <section className="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden">
-        <motion.div style={{ y }} className="absolute inset-0">
+        <div className="absolute inset-0">
           <img 
             alt="Hero Collie" 
             className="w-full h-full object-cover object-center brightness-90" 
@@ -178,7 +178,7 @@ function AppContent() {
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-l from-black/70 via-black/30 to-transparent"></div>
-        </motion.div>
+        </div>
         <div className="relative max-w-7xl mx-auto px-6 w-full text-white flex justify-end">
           <motion.div 
             initial="hidden"
@@ -249,7 +249,7 @@ function AppContent() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center"
         >
           <div>
@@ -285,7 +285,7 @@ function AppContent() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           className="max-w-7xl mx-auto px-6"
         >
           <div className="text-center mb-16">
@@ -364,7 +364,7 @@ function AppContent() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           className="max-w-7xl mx-auto px-6"
         >
           <div className="text-center mb-16">
@@ -416,7 +416,7 @@ function AppContent() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           className="max-w-7xl mx-auto px-6"
         >
           <div className="text-center mb-16">
@@ -480,7 +480,7 @@ function AppContent() {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true }}
           className="max-w-7xl mx-auto px-6 grid lg:grid-cols-5 gap-16 items-center"
         >
           <div className="lg:col-span-2">
