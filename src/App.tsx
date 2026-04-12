@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { 
   PawPrint, 
   Heart, 
@@ -31,6 +31,8 @@ export default function App() {
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const { scrollY } = useScroll();
+  const y = useTransform(scrollY, [0, 1000], [0, 300]);
 
   useEffect(() => {
     document.title = "Collie Rescue of Indiana";
@@ -58,6 +60,7 @@ function AppContent() {
     }
 
     const submission = {
+      access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE",
       name: formData.get("name") as string,
       email: formData.get("email") as string,
       subject: formData.get("subject") as string,
@@ -65,16 +68,17 @@ function AppContent() {
     };
 
     try {
-      // Send email via backend API
-      const emailResponse = await fetch("/api/send-email", {
+      // Send email via Web3Forms
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(submission),
       });
 
-      if (!emailResponse.ok) {
+      if (!response.ok) {
         throw new Error("Failed to send email");
       }
 
@@ -166,7 +170,7 @@ function AppContent() {
 
       {/* Hero Section */}
       <section className="relative h-[85vh] min-h-[600px] flex items-center overflow-hidden">
-        <div className="absolute inset-0">
+        <motion.div style={{ y }} className="absolute inset-0">
           <img 
             alt="Hero Collie" 
             className="w-full h-full object-cover object-center brightness-90" 
@@ -174,33 +178,54 @@ function AppContent() {
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-l from-black/70 via-black/30 to-transparent"></div>
-        </div>
+        </motion.div>
         <div className="relative max-w-7xl mx-auto px-6 w-full text-white flex justify-end">
           <motion.div 
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.2, delayChildren: 0.3 }
+              }
+            }}
             className="max-w-2xl text-right"
           >
-            <span className="inline-block bg-collie-gold/80 text-white text-[10px] tracking-widest uppercase px-3 py-1 rounded mb-6 font-semibold">
+            <motion.span 
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+              className="inline-block bg-collie-gold/80 text-white text-[10px] tracking-widest uppercase px-3 py-1 rounded mb-6 font-semibold"
+            >
               501(c)(3) Nonprofit • Winchester, Indiana
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            </motion.span>
+            <motion.h1 
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+              className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
+            >
               Every Collie Deserves a Forever Home
-            </h1>
-            <p className="text-lg md:text-xl mb-10 text-gray-100 ml-auto max-w-xl font-light">
+            </motion.h1>
+            <motion.p 
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+              className="text-lg md:text-xl mb-10 text-gray-100 ml-auto max-w-xl font-light"
+            >
               Collie Rescue of Indiana is an all-volunteer nonprofit dedicated to rescuing, rehabilitating, and rehoming collies in need across Indiana and beyond.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-end">
+            </motion.p>
+            <motion.div 
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+              className="flex flex-wrap gap-4 justify-end"
+            >
               <a className="bg-collie-gold hover:bg-opacity-90 text-white px-8 py-4 rounded-full font-semibold transition flex items-center gap-2 shadow-lg" href="#adopt">
                 <PawPrint size={20} /> Adopt a Collie
               </a>
               <a className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold transition border border-white/30 flex items-center gap-2" href="#donate">
                 <Heart size={20} /> Make a Donation
               </a>
-            </div>
+            </motion.div>
             
-            <div className="mt-20 flex gap-12 border-t border-white/20 pt-8 justify-end">
+            <motion.div 
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
+              className="mt-20 flex gap-12 border-t border-white/20 pt-8 justify-end"
+            >
               <div>
                 <div className="text-3xl font-bold">100%</div>
                 <div className="text-xs uppercase tracking-wider text-gray-300">Volunteer Run</div>
@@ -213,7 +238,7 @@ function AppContent() {
                 <div className="text-3xl font-bold">∞</div>
                 <div className="text-xs uppercase tracking-wider text-gray-300">Love Given</div>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -621,6 +646,20 @@ function AppContent() {
           </div>
         </div>
       </footer>
+
+      {/* Floating Donate Button */}
+      <motion.a
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1.5, duration: 0.5 }}
+        href="https://www.paypal.com/ncp/payment/GH98RB4HXZ76N"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-collie-gold text-white px-6 py-4 rounded-full shadow-2xl font-bold flex items-center gap-2 hover:bg-opacity-90 hover:scale-105 transition-all"
+      >
+        <Heart size={20} className="fill-white" />
+        Donate
+      </motion.a>
     </motion.div>
   );
 }
