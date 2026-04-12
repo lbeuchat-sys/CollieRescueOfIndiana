@@ -88,7 +88,12 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <motion.div 
+      initial={{ opacity: 0 }} 
+      animate={{ opacity: 1 }} 
+      transition={{ duration: 1.5, ease: "easeOut" }}
+      className="min-h-screen flex flex-col"
+    >
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 py-4">
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
@@ -606,11 +611,16 @@ function AppContent() {
             </div>
           </div>
           <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 uppercase tracking-widest gap-4">
-            <div>© 2026 Collie Rescue of Indiana. All rights reserved. 501(c)(3) Nonprofit.</div>
-            <div>Made with ❤️ by volunteers, for collies.</div>
+            <div className="text-center md:text-left">© 2026 Collie Rescue of Indiana. All rights reserved. 501(c)(3) Nonprofit.</div>
+            <div className="text-center md:text-right flex flex-col gap-2">
+              <div>Made with ❤️ by volunteers, for collies.</div>
+              <div>
+                Website designed and built by <a href="https://www.korva.digital/" target="_blank" rel="noopener noreferrer" className="text-collie-gold hover:underline font-bold">Korva Digital</a>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
-    </div>
+    </motion.div>
   );
 }
