@@ -19,10 +19,10 @@ import {
 } from "lucide-react";
 import { useState, FormEvent, useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
-import happyCollie from "./assets/happy-collie.jpeg";
-import colliePortrait from "./assets/collie-portrait.jpeg";
-import womanCollie from "./assets/woman-collie.jpeg";
-import logoPng from "./assets/logo.png";
+import heroBg from "./assets/hero-bg.jpeg";
+import adoptPortrait from "./assets/adopt-portrait.jpeg";
+import volunteerDogs from "./assets/volunteer-dogs.jpeg";
+import mainLogo from "./assets/main-logo.png";
 
 export default function App() {
   return (
@@ -115,7 +115,8 @@ function AppContent() {
               <img 
                 alt="Collie Rescue of Indiana Logo" 
                 className="h-12 w-auto rounded-full" 
-                src={logoPng}
+                src={mainLogo}
+                referrerPolicy="no-referrer"
               />
             </a>
           </div>
@@ -277,7 +278,8 @@ function AppContent() {
               <img 
                 alt="Happy Collie" 
                 className="w-full aspect-[4/3] object-cover" 
-                src={happyCollie}
+                src={heroBg}
+                referrerPolicy="no-referrer"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-collie-brown text-white p-6 rounded-2xl shadow-xl max-w-[200px]">
@@ -347,7 +349,8 @@ function AppContent() {
                 <img 
                   alt="Collie Portrait" 
                   className="w-full aspect-square object-cover" 
-                  src={colliePortrait}
+                  src={adoptPortrait}
+                  referrerPolicy="no-referrer"
                 />
               </div>
               <div className="bg-emerald-50 border border-emerald-100 p-8 rounded-[2.5rem] text-center">
@@ -460,7 +463,8 @@ function AppContent() {
               <img 
                 alt="Woman with Collie" 
                 className="w-full h-80 object-cover object-center" 
-                src={womanCollie}
+                src={volunteerDogs}
+                referrerPolicy="no-referrer"
               />
             </div>
             <div className="bg-collie-tan border border-gray-100 p-8 rounded-[2.5rem]">
@@ -613,7 +617,8 @@ function AppContent() {
               <img 
                 alt="Collie Rescue Footer Logo" 
                 className="h-16 w-auto mb-8" 
-                src={logoPng}
+                src={mainLogo}
+                referrerPolicy="no-referrer"
               />
               <p className="text-gray-300 max-w-sm text-sm leading-relaxed">
                 Rescuing, rehabilitating, and rehoming collies in need across Indiana, powered entirely by volunteers.
