@@ -19,10 +19,6 @@ import {
 } from "lucide-react";
 import { useState, FormEvent, useEffect } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
-import heroBg from "./assets/hero-bg.jpeg";
-import adoptPortrait from "./assets/adopt-portrait.jpeg";
-import volunteerDogs from "./assets/volunteer-dogs.jpeg";
-import mainLogo from "./assets/main-logo.png";
 
 export default function App() {
   return (
@@ -115,7 +111,7 @@ function AppContent() {
               <img 
                 alt="Collie Rescue of Indiana Logo" 
                 className="h-12 w-auto rounded-full" 
-                src={mainLogo}
+                src="/main-logo.png"
                 referrerPolicy="no-referrer"
               />
             </a>
@@ -278,7 +274,7 @@ function AppContent() {
               <img 
                 alt="Happy Collie" 
                 className="w-full aspect-[4/3] object-cover" 
-                src={heroBg}
+                src="/hero-bg.jpeg"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -349,7 +345,7 @@ function AppContent() {
                 <img 
                   alt="Collie Portrait" 
                   className="w-full aspect-square object-cover" 
-                  src={adoptPortrait}
+                  src="/adopt-portrait.jpeg"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -463,7 +459,7 @@ function AppContent() {
               <img 
                 alt="Woman with Collie" 
                 className="w-full h-80 object-cover object-center" 
-                src={volunteerDogs}
+                src="/volunteer-dogs.jpeg"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -617,7 +613,7 @@ function AppContent() {
               <img 
                 alt="Collie Rescue Footer Logo" 
                 className="h-16 w-auto mb-8" 
-                src={mainLogo}
+                src="/main-logo.png"
                 referrerPolicy="no-referrer"
               />
               <p className="text-gray-300 max-w-sm text-sm leading-relaxed">
