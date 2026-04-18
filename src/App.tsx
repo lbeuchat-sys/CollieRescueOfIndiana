@@ -31,6 +31,7 @@ export default function App() {
 function AppContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string>("");
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 1000], [0, 300]);
 
@@ -68,6 +69,7 @@ function AppContent() {
     };
 
     try {
+      setErrorMessage("");
       // Send email via Web3Forms
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -78,15 +80,18 @@ function AppContent() {
         body: JSON.stringify(submission),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        throw new Error("Failed to send email");
+        throw new Error(result.message || "Failed to send email");
       }
 
       setFormStatus("success");
       // Reset after 5 seconds
       setTimeout(() => setFormStatus("idle"), 5000);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error submitting form:", error);
+      setErrorMessage(error.message || "There was an error sending your message. Please try again later.");
       setFormStatus("error");
     }
   };
@@ -523,7 +528,7 @@ function AppContent() {
                     <X size={32} />
                   </div>
                   <h3 className="text-2xl font-bold text-gray-800 mb-2">Submission Failed</h3>
-                  <p className="text-gray-600">There was an error sending your message. Please try again later.</p>
+                  <p className="text-gray-600">{errorMessage}</p>
                   <button 
                     onClick={() => setFormStatus("idle")}
                     className="mt-6 text-collie-green font-semibold hover:underline"
