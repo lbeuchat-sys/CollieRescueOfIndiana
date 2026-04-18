@@ -111,7 +111,7 @@ function AppContent() {
               <img 
                 alt="Collie Rescue of Indiana Logo" 
                 className="h-12 w-auto rounded-full" 
-                src="/main-logo.png"
+                src="/logo.png"
                 referrerPolicy="no-referrer"
               />
             </a>
@@ -274,7 +274,7 @@ function AppContent() {
               <img 
                 alt="Happy Collie" 
                 className="w-full aspect-[4/3] object-cover" 
-                src="/hero-bg.jpeg"
+                src="/happy-collie.jpeg"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -345,7 +345,7 @@ function AppContent() {
                 <img 
                   alt="Collie Portrait" 
                   className="w-full aspect-square object-cover" 
-                  src="/adopt-portrait.jpeg"
+                  src="/collie-portrait.jpeg"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -459,7 +459,7 @@ function AppContent() {
               <img 
                 alt="Woman with Collie" 
                 className="w-full h-80 object-cover object-center" 
-                src="/volunteer-dogs.jpeg"
+                src="/woman-collie.jpeg"
                 referrerPolicy="no-referrer"
               />
             </div>
@@ -613,7 +613,7 @@ function AppContent() {
               <img 
                 alt="Collie Rescue Footer Logo" 
                 className="h-16 w-auto mb-8" 
-                src="/main-logo.png"
+                src="/logo.png"
                 referrerPolicy="no-referrer"
               />
               <p className="text-gray-300 max-w-sm text-sm leading-relaxed">
