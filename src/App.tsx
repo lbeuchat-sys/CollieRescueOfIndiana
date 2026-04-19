@@ -36,7 +36,7 @@ function AppContent() {
   const y = useTransform(scrollY, [0, 1000], [0, 300]);
 
   useEffect(() => {
-    document.title = "Collie Rescue of Indiana";
+    document.title = "Collie Rescue in Winchester IN | Adopt a Dog";
   }, []);
 
   const navLinks = [
@@ -208,13 +208,13 @@ function AppContent() {
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
               className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
             >
-              Every Collie Deserves a Forever Home
+              Collie Rescue in Winchester Indiana
             </motion.h1>
             <motion.p 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
               className="text-lg md:text-xl mb-10 text-gray-100 ml-auto max-w-xl font-light"
             >
-              Collie Rescue of Indiana is an all-volunteer nonprofit dedicated to rescuing, rehabilitating, and rehoming collies in need across Indiana and beyond.
+              Welcome to Collie Rescue of Indiana, your trusted local 501(c)(3) nonprofit in Winchester, Indiana. We are dedicated to rescuing, rehabilitating, and rehoming collies in need. Adopt a dog and give every collie the forever home they deserve.
             </motion.p>
             <motion.div 
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } } }}
@@ -261,7 +261,7 @@ function AppContent() {
           <div>
             <span className="text-collie-brown text-xs font-bold uppercase tracking-widest block mb-4">Our Mission</span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 leading-tight">
-              Rescuing Collies With Teamwork & Compassion
+              Our Collie Rescue Mission in Winchester, Indiana
             </h2>
             <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
               <p>Collie Rescue of Indiana is an all-volunteer 501(c)(3) nonprofit based in Winchester, Indiana. We take in collies who are strays, pulled from shelters, or surrendered by families facing life changes, including the loss of a loved one, illness, or a move that means their dog can no longer come along.</p>
@@ -272,10 +272,11 @@ function AppContent() {
           <div className="relative">
             <div className="rounded-2xl overflow-hidden shadow-2xl rotate-1">
               <img 
-                alt="Happy Collie" 
+                alt="Collie Rescue in Winchester Indiana - Our Mission" 
                 className="w-full aspect-[4/3] object-cover" 
                 src="/happy-collie-v3.jpeg"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
             </div>
             <div className="absolute -bottom-6 -left-6 bg-collie-brown text-white p-6 rounded-2xl shadow-xl max-w-[200px]">
@@ -298,8 +299,8 @@ function AppContent() {
           <div className="text-center mb-16">
             <div className="bg-collie-tan/50 p-10 rounded-[3rem] border border-collie-tan inline-block max-w-3xl">
               <span className="text-collie-brown text-xs font-bold uppercase tracking-widest block mb-4">Adoption</span>
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Find Your Forever Companion</h2>
-              <p className="text-gray-500 max-w-2xl mx-auto">Our adoption process is designed to ensure every collie goes to the right home, and every family gets the right dog.</p>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Indiana Collie Adoption Process</h2>
+              <p className="text-gray-500 max-w-2xl mx-auto">Our local adoption process is designed to ensure every rescued collie goes to the right home, and every family gets the right dog. Learn how to adopt a dog below.</p>
             </div>
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -343,10 +344,11 @@ function AppContent() {
             <div className="space-y-6">
               <div className="rounded-[2.5rem] overflow-hidden shadow-xl">
                 <img 
-                  alt="Collie Portrait" 
+                  alt="Adopt a Collie in Indiana" 
                   className="w-full aspect-square object-cover" 
                   src="/collie-portrait-v3.jpeg"
                   referrerPolicy="no-referrer"
+                  loading="lazy"
                 />
               </div>
               <div className="bg-emerald-50 border border-emerald-100 p-8 rounded-[2.5rem] text-center">
@@ -366,6 +368,33 @@ function AppContent() {
         </motion.div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="py-24 bg-gray-50 border-t border-gray-100">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto px-6 text-center"
+        >
+          <span className="text-collie-brown text-xs font-bold uppercase tracking-widest block mb-4">FAQ</span>
+          <h2 className="text-4xl font-bold text-gray-900 mb-12">Frequently Asked Questions</h2>
+          <div className="space-y-6 text-left">
+            {[
+              { q: "What is the collie adoption fee in Indiana?", a: "Our local adoption fees vary depending on the age and health of the rescued dog, but typically range from $200 to $400. This helps cover essential veterinary care, neutering or spaying, and vaccinations before adoption." },
+              { q: "Do you adopt rescued collies out of state?", a: "While we are primarily a local Indiana dog rescue located in Winchester, we occasionally arrange and approve out-of-state adoptions if we find the perfect home for the dog. A home visit is still required." },
+              { q: "Do I need a fenced yard to adopt a collie?", a: "Yes, we generally require a physically fenced yard to ensure the safety and wellbeing of our adopted dogs, as collies need a safe outdoor space to run and play." },
+              { q: "Are your rescues good with children and other pets?", a: "Each rescue dog is unique. We thoroughly evaluate our collies in local foster homes to understand their temperament. Our Petfinder listings specify if a dog is well-suited for families with children, other dogs, and cats." }
+            ].map((faq, idx) => (
+              <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+                <h3 className="text-xl font-bold text-gray-800 mb-3">{faq.q}</h3>
+                <p className="text-gray-600 leading-relaxed">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
       {/* Donation Section */}
       <section id="donate" className="py-24 bg-collie-dark-green text-white">
         <motion.div 
@@ -377,7 +406,7 @@ function AppContent() {
         >
           <div className="text-center mb-16">
             <span className="text-collie-gold text-xs font-bold uppercase tracking-widest block mb-4">Donate</span>
-            <h2 className="text-4xl font-bold mb-4">Your Gift Saves Lives</h2>
+            <h2 className="text-4xl font-bold mb-4">Support Our Dog Rescue &amp; Save Lives</h2>
             <p className="text-gray-300 max-w-3xl mx-auto">100% of donations go directly to the care of the collies in our rescue. We have no paid staff, just volunteers who show up every day out of love for this breed.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
@@ -430,7 +459,7 @@ function AppContent() {
           <div className="text-center mb-16">
             <div className="bg-collie-tan/50 p-10 rounded-[3rem] border border-collie-tan inline-block max-w-3xl">
               <span className="text-collie-brown text-xs font-bold uppercase tracking-widest block mb-4">Get Involved</span>
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Volunteers Make It All Possible</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Volunteer at Our Local Animal Rescue</h2>
               <p className="text-gray-500 max-w-2xl mx-auto">We have no paid staff. Every collie rescued, every adoption arranged, every vet visit scheduled, it's all done by people like you who simply care.</p>
             </div>
           </div>
@@ -457,10 +486,11 @@ function AppContent() {
           <div className="space-y-8">
             <div className="rounded-[2.5rem] overflow-hidden shadow-xl">
               <img 
-                alt="Woman with Collie" 
+                alt="Woman with Collie volunteering in Indiana" 
                 className="w-full h-80 object-cover object-center" 
                 src="/woman-collie-v3.jpeg"
                 referrerPolicy="no-referrer"
+                loading="lazy"
               />
             </div>
             <div className="bg-collie-tan border border-gray-100 p-8 rounded-[2.5rem]">
@@ -640,9 +670,12 @@ function AppContent() {
               >
                 <PawPrint size={14} /> Available Dogs on Petfinder <ChevronRight size={14} />
               </a>
-              <h4 className="font-bold text-lg mb-6">Contact</h4>
-              <a href="mailto:Collierescue1@aol.com" className="text-sm text-gray-300 mb-2 block hover:text-collie-gold transition-colors">Collierescue1@aol.com</a>
-              <p className="text-sm text-gray-300">Winchester, Indiana</p>
+              <h4 className="font-bold text-lg mb-6">Contact &amp; Location</h4>
+              <address className="not-italic text-sm text-gray-300 space-y-2">
+                <p className="font-bold text-white">Collie Rescue of Indiana</p>
+                <p>Winchester, Indiana</p>
+                <p className="mt-4"><a href="mailto:Collierescue1@aol.com" className="hover:text-collie-gold transition-colors block">Collierescue1@aol.com</a></p>
+              </address>
             </div>
           </div>
           <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-400 uppercase tracking-widest gap-4">
