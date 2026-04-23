@@ -110,8 +110,8 @@ function AppContent() {
             <a href="#" className="flex items-center gap-2">
               <img 
                 alt="Collie Rescue of Indiana Logo" 
-                className="h-12 w-auto rounded-full" 
-                src="/logo-v3.png"
+                className="h-12 w-auto" 
+                src="/logo.png"
                 referrerPolicy="no-referrer"
               />
             </a>
@@ -274,7 +274,7 @@ function AppContent() {
               <img 
                 alt="Collie Rescue in Winchester Indiana - Our Mission" 
                 className="w-full aspect-[4/3] object-cover" 
-                src="/happy-collie-v3.jpeg"
+                src="/happy-collie.jpeg"
                 referrerPolicy="no-referrer"
                 loading="lazy"
               />
@@ -346,7 +346,7 @@ function AppContent() {
                 <img 
                   alt="Adopt a Collie in Indiana" 
                   className="w-full aspect-square object-cover" 
-                  src="/collie-portrait-v3.jpeg"
+                  src="/collie-portrait.jpeg"
                   referrerPolicy="no-referrer"
                   loading="lazy"
                 />
@@ -364,33 +364,6 @@ function AppContent() {
                 </a>
               </div>
             </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* FAQ Section */}
-      <section id="faq" className="py-24 bg-gray-50 border-t border-gray-100">
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto px-6 text-center"
-        >
-          <span className="text-collie-brown text-xs font-bold uppercase tracking-widest block mb-4">FAQ</span>
-          <h2 className="text-4xl font-bold text-gray-900 mb-12">Frequently Asked Questions</h2>
-          <div className="space-y-6 text-left">
-            {[
-              { q: "What is the collie adoption fee in Indiana?", a: "Our local adoption fees vary depending on the age and health of the rescued dog, but typically range from $200 to $400. This helps cover essential veterinary care, neutering or spaying, and vaccinations before adoption." },
-              { q: "Do you adopt rescued collies out of state?", a: "While we are primarily a local Indiana dog rescue located in Winchester, we occasionally arrange and approve out-of-state adoptions if we find the perfect home for the dog. A home visit is still required." },
-              { q: "Do I need a fenced yard to adopt a collie?", a: "Yes, we generally require a physically fenced yard to ensure the safety and wellbeing of our adopted dogs, as collies need a safe outdoor space to run and play." },
-              { q: "Are your rescues good with children and other pets?", a: "Each rescue dog is unique. We thoroughly evaluate our collies in local foster homes to understand their temperament. Our Petfinder listings specify if a dog is well-suited for families with children, other dogs, and cats." }
-            ].map((faq, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-                <h3 className="text-xl font-bold text-gray-800 mb-3">{faq.q}</h3>
-                <p className="text-gray-600 leading-relaxed">{faq.a}</p>
-              </div>
-            ))}
           </div>
         </motion.div>
       </section>
@@ -488,7 +461,7 @@ function AppContent() {
               <img 
                 alt="Woman with Collie volunteering in Indiana" 
                 className="w-full h-80 object-cover object-center" 
-                src="/woman-collie-v3.jpeg"
+                src="/woman-collie.jpeg"
                 referrerPolicy="no-referrer"
                 loading="lazy"
               />
@@ -643,7 +616,7 @@ function AppContent() {
               <img 
                 alt="Collie Rescue Footer Logo" 
                 className="h-16 w-auto mb-8" 
-                src="/logo-v3.png"
+                src="/logo.png"
                 referrerPolicy="no-referrer"
               />
               <p className="text-gray-300 max-w-sm text-sm leading-relaxed">
