@@ -110,7 +110,7 @@ function AppContent() {
             <a href="#" className="flex items-center gap-2">
               <img 
                 alt="Collie Rescue of Indiana Logo" 
-                className="h-12 w-auto" 
+                className="h-12 w-auto rounded-full" 
                 src="/logo-v3.png"
                 referrerPolicy="no-referrer"
               />
